@@ -8,6 +8,13 @@ class Problem12 extends Component {
     this.setState({showSolution:!this.state.showSolution})
   }
 
+  findFactorDivisors = (divisorsMin) => {
+   
+    
+    
+
+  }
+
   render() {
     let solution = null;
     if(this.state.showSolution) {
@@ -29,6 +36,8 @@ class Problem12 extends Component {
         <p>28: 1,2,4,7,14,28</p>
         <p>We can see that 28 is the first triangle number to have over five divisors.</p>
         <p>What is the value of the first triangle number to have over five hundred divisors?</p>
+        
+        <h1>Divisors:{this.findFactorDivisors(500)}</h1>
         <button className="Button" onClick={() => this.showSolutionHandler()}>{this.state.showSolution ? 'Hide solution notes' : 'Show solution notes'}</button>
         {solution}
       </div>

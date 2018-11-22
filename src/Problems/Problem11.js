@@ -4,114 +4,66 @@ import './Problems.css'
 class Problem11 extends Component {
   state = {showSolution:false}
 
-  // showSolutionHandler = () => {
-  //   this.setState({showSolution:!this.state.showSolution})
-  // }
-  //
-  // get_2darray = (list) => {
-  //   let array = list.split('\n');
-  //   let array2 = []
-  //   for(let line_num = 0; line_num < array.length; line_num++){
-  //     let line = array[line_num].split(' ')
-  //     if (line[0] != "") {
-  //       let intLine = line.map((num)=>parseInt(num))
-  //       array2.push(intLine)
-  //     }
-  //   }
-  //   return array2;
-  // }
-  //
-  // get_max_horizontal = (array) => {
-  //   let max = 0
-  //   let buffer = 3
-  //   for (let x = 0; x < array.length - buffer; x++) {
-  //     for (let y = 0; y < array[0].length; y++) {
-  //       let val = this.list_product([
-  //         array[x + 0][y],
-  //         array[x + 1][y],
-  //         array[x + 2][y],
-  //         array[x + 3][y]
-  //       ])
-  //       if (val > max) {
-  //         max = val
-  //       }
-  //     }
-  //   }
-  //   return max
-  // }
-  // get_max_vertical = (array) => {
-  //   let max = 0
-  //   let buffer = 3
-  //   for (let x = 0; x < array.length; x++) {
-  //     for (let y = 0; y < array[0].length - buffer; y++) {
-  //       let val = this.list_product([
-  //         array[x][y + 0],
-  //         array[x][y + 1],
-  //         array[x][y + 2],
-  //         array[x][y + 3]
-  //       ])
-  //       if (val > max) {
-  //         max = val
-  //       }
-  //     }
-  //   }
-  //   return max
-  // }
-  // get_max_right_diagonal = (array) => {
-  //   let max = 0
-  //   let buffer = 3
-  //   for (let x = 0; x < array.length - buffer; x++) {
-  //     for (let y = 0; y < array[0].length - buffer; y++) {
-  //       let val = this.list_product([
-  //         array[x + 0][y + 0],
-  //         array[x + 1][y + 1],
-  //         array[x + 2][y + 2],
-  //         array[x + 3][y + 3]
-  //       ])
-  //       if (val > max) {
-  //         max = val
-  //       }
-  //     }
-  //   }
-  //   return max
-  // }
-  // get_max_left_diagonal = (array) => {
-  //   let max = 0
-  //   let buffer = 3
-  //   for (let x = buffer; x < array.length; x++) {
-  //     for (let y = 0; y < array[0].length - buffer; y++) {
-  //       let val = this.list_product([
-  //         array[x - 0][y + 0],
-  //         array[x - 1][y + 1],
-  //         array[x - 2][y + 2],
-  //         array[x - 3][y + 3]
-  //       ])
-  //       if (val > max) {
-  //         max = val
-  //       }
-  //     }
-  //   }
-  //   return max
-  // }
-  //
-  // list_product = (list) => {
-  //   let product = 1
-  //   for (let i = 0; i < list.length; i++) {
-  //     product *= list[i]
-  //   }
-  //   return product
-  // }
-  //
-  // productCheck = (list) => {
-  //   let array = this.get_2darray(list)
-  //   let horizontal_max = this.get_max_horizontal(array)
-  //   return Math.max.apply(null, [
-  //     this.get_max_horizontal(array),
-  //     this.get_max_vertical(array),
-  //     this.get_max_left_diagonal(array),
-  //     this.get_max_right_diagonal(array)
-  //   ])
-  // }
+  showSolutionHandler = () => {
+    this.setState({showSolution:!this.state.showSolution})
+  }
+
+  findGreatestProduct = (numbers) => {
+    console.log(numbers);
+    let separatedNumbers = numbers.split('\n');
+    separatedNumbers = separatedNumbers.filter((item)=>item.length>0);
+    
+    for(let i = 0; i<20; i++){
+      let row = separatedNumbers[i].split(' ');
+      separatedNumbers[i] = separatedNumbers[i].split(' ');
+    }
+    console.log(separatedNumbers);
+    
+    let greatestProduct = 1;
+
+    //find horizontal product
+    for(let i = 0; i<20; i++){
+      for(let j = 0; j<17; j++){
+        let product = separatedNumbers[i][j]*separatedNumbers[i][j+1]*separatedNumbers[i][j+2]*separatedNumbers[i][j+3];
+        if(product > greatestProduct){
+          greatestProduct = product;
+        }
+      }
+    }
+   
+    //find vertical product 
+    for(let i = 0; i<17; i++){
+      for(let j=0; j<20; j++){
+        let product = separatedNumbers[i][j]*separatedNumbers[i+1][j]*separatedNumbers[i+2][j]*separatedNumbers[i+3][j];
+        if(product > greatestProduct){
+          greatestProduct = product;
+        }
+      }
+    }
+
+    //find top left to bottom right diagonal products
+    for(let i = 0; i<17; i++){
+      for(let j =0; j<17; j++){
+        let product = separatedNumbers[i][j]*separatedNumbers[i+1][j+1]*separatedNumbers[i+2][j+2]*separatedNumbers[i+3][j+3];
+        if(product > greatestProduct){
+          greatestProduct = product;
+        }
+      }
+    }
+    
+    //find top right to bottom left diagonal products
+    for(let i = 3 ; i<20; i++){
+      for(let j=0; j<17; j++){
+        let product = separatedNumbers[i][j]*separatedNumbers[i-1][j+1]*separatedNumbers[i-2][j+2]*separatedNumbers[i-3][j+3];
+        if(product > greatestProduct){
+          greatestProduct = product;
+        }
+      }
+    }
+    return greatestProduct;
+  }
+
+
 
 
   render() {
@@ -160,7 +112,7 @@ class Problem11 extends Component {
 01 70 54 71 83 51 54 69 16 92 33 48 61 43 52 01 89 19 67 48`
     return (
       <div className="Problem">
-        <h2>Problem 11: Largest product in a grid (unsolved)</h2>
+        <h2>Problem 11: Largest product in a grid</h2>
         <p>In the 20×20 grid below, four numbers along a diagonal line have been marked in red.</p>
         <p>08 02 22 97 38 15 00 40 00 75 04 05 07 78 52 12 50 77 91 08</p>
         <p>49 49 99 40 17 81 18 57 60 87 17 40 98 43 69 48 04 56 62 00</p>
@@ -186,7 +138,7 @@ class Problem11 extends Component {
         <br/>
         <p>What is the greatest product of four adjacent numbers in the same direction (up, down, left, right, or diagonally) in the 20×20 grid?</p>
         <br/>
-        {/* <p>{this.productCheck(numbers)}</p> */}
+        <h2>Greatest product: {this.findGreatestProduct(numbers)}</h2>
 
         <button className="Button" onClick={() => this.showSolutionHandler()}>{this.state.showSolution ? 'Hide solution notes' : 'Show solution notes'}</button>
         {solution}
@@ -198,7 +150,7 @@ class Problem11 extends Component {
 const Solution = () => {
   return (
     <div>
-      <p>unsolved</p>
+      <p>Solved</p>
       <p></p>
       <p></p>
     </div>
