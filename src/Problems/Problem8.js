@@ -22,7 +22,7 @@ class Problem8 extends Component {
         index = i;
       }
     }
-    let digits = (""+Arr[index]+Arr[index+1]+Arr[index+2]+Arr[index+3]+Arr[index+4]+Arr[index+5]+Arr[index+6]+Arr[index+7]+Arr[index+8]+Arr[index+9]+Arr[index+10]+Arr[index+11]+Arr[index+12])
+    // let digits = (""+Arr[index]+Arr[index+1]+Arr[index+2]+Arr[index+3]+Arr[index+4]+Arr[index+5]+Arr[index+6]+Arr[index+7]+Arr[index+8]+Arr[index+9]+Arr[index+10]+Arr[index+11]+Arr[index+12])
     console.log(index);
     //returned largest product
     return largestProduct;

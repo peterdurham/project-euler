@@ -9,15 +9,15 @@ class Problem11 extends Component {
   }
 
   findGreatestProduct = (numbers) => {
-    console.log(numbers);
+    
     let separatedNumbers = numbers.split('\n');
     separatedNumbers = separatedNumbers.filter((item)=>item.length>0);
     
     for(let i = 0; i<20; i++){
-      let row = separatedNumbers[i].split(' ');
+      // let row = separatedNumbers[i].split(' ');
       separatedNumbers[i] = separatedNumbers[i].split(' ');
     }
-    console.log(separatedNumbers);
+    
     
     let greatestProduct = 1;
 

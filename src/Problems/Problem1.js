@@ -17,7 +17,7 @@ class Problem1 extends Component {
           }
       }
       return sum;
-      console.log(sum);
+      
   }
 
   render() {
