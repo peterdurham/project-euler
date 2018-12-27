@@ -27,7 +27,8 @@ class App extends Component {
     return (
       <div className="App">
         <h1>Project Euler Problems & Notes</h1>
-        <p className="App__text">Solution's to the following problems can be found in the src/Problems folder.</p>
+        <p className="header__text"><span className="bold">Project Euler</span> is a series of increasingly complex problems that require <span className="bold">coding</span> and <span className="bold">math</span> to solve. </p>
+        <br/><p className="header__text">Solution's to the following problems can be found in the <span className="bold">src/Problems</span> folder.</p>
         <p className="App__text">Problems 1-11 solved with solution notes below.</p>
         <Problem1 />
         <Problem2 />
