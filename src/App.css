@@ -1,8 +1,9 @@
 .App {
   text-align: center;
+  font-family: "Raleway", sans-serif;
 }
 
-h1{
+h1 {
   font-size: 36px;
   margin-bottom: 30px;
 }
@@ -16,6 +17,6 @@ h1{
   width: 650px;
   text-align: center;
 }
-.bold{
+.bold {
   font-weight: bold;
 }
